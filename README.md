@@ -16,3 +16,9 @@
 ## 查找
 
 - [二分查找](https://github.com/JMZRB/algorithm/blob/master/src/search/BinarySearch.java)
+
+## 树
+
+- [二叉树前序遍历](https://github.com/JMZRB/algorithm/blob/master/src/tree/PreOrderTraversal.java)
+- [二叉树中序遍历](https://github.com/JMZRB/algorithm/blob/master/src/tree/InOrderTraversal.java)
+- [二叉树后续遍历](https://github.com/JMZRB/algorithm/blob/master/src/tree/PostOrderTraversal.java)
