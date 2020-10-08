@@ -1,8 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author ：zhaoRuBing
@@ -12,12 +10,13 @@ import java.util.Stack;
 public class LevelOrderTraversal {
     public static void main(String[] args) {
         TreeNode treeNode = TreeNode.initTree();
-//        System.out.println(levelOrderTraversal(treeNode));
-        System.out.println(levelOrderTraversal2(treeNode,0));
+        System.out.println(levelOrderTraversal(treeNode));
+//        System.out.println(levelOrderTraversal1(treeNode));
+//        System.out.println(levelOrderTraversal2(treeNode));
     }
 
     /**
-     * 非递归遍历
+     * 非递归层序遍历二叉树    [1, 2, 3, 4, 5, 6, 7]
      * @param root
      * @return
      */
@@ -26,26 +25,57 @@ public class LevelOrderTraversal {
             return null;
         }
         List<Integer> res = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
+        Queue<TreeNode> queue = new LinkedList<>();
 
-        stack.push(root);
-        while (!stack.isEmpty()){
-            TreeNode temp = stack.pop();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            TreeNode temp = queue.poll();
             res.add(temp.data);
-            if(temp.rightNode != null){
-                stack.push(temp.leftNode);
-            }
-            if(temp.leftNode != null){
-                stack.push(temp.rightNode);
-            }
+            if(temp.leftNode != null)
+                queue.offer(temp.leftNode);
+            if(temp.rightNode != null)
+                queue.offer(temp.rightNode);
+
         }
         return res;
     }
 
+    /**
+     * 非递归层序遍历二叉树    [[1], [2, 3], [4, 5, 6, 7]]
+     * @param root
+     * @return
+     */
+    private static List<List<Integer>> levelOrderTraversal1(TreeNode root){
+        if(root == null){
+            return null;
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
 
+        queue.add(root);
+        while (!queue.isEmpty()){
+            List<Integer> tmp = new ArrayList<>();
+            for(int i = queue.size(); i > 0; i--){
+                TreeNode temp = queue.poll();
+                tmp.add(temp.data);
+                if(temp.leftNode != null){
+                    queue.add(temp.leftNode);
+                }
+                if(temp.rightNode != null){
+                    queue.add(temp.rightNode);
+                }
+            }
+            res.add(tmp);
+        }
+        return res;
+    }
+
+    /**
+     * 递归层序遍历二叉树    [[1], [2, 3], [4, 5, 6, 7]]
+     */
     private static List<List<Integer>> res = new ArrayList<>();
-    private static List<List<Integer>> levelOrderTraversal2(TreeNode root, int level){
-        bfs(root,level);
+    private static List<List<Integer>> levelOrderTraversal2(TreeNode root){
+        bfs(root,0);
         return res;
     }
     private static void bfs(TreeNode root, int level){
@@ -60,4 +90,6 @@ public class LevelOrderTraversal {
         bfs(root.leftNode,level+1);
         bfs(root.rightNode,level+1);
     }
+
+
 }
