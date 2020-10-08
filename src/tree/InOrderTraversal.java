@@ -15,8 +15,7 @@ import java.util.Stack;
 public class InOrderTraversal {
     public static void main(String[] args) {
         TreeNode treeNode = TreeNode.initTree();
-        List<Integer> inOrderTraversal = inOrderTraversal(treeNode);
-        System.out.println(inOrderTraversal);
+        System.out.println(inOrderTraversal(treeNode));
 //        inOrderTraversal2(treeNode);
     }
 

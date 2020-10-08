@@ -16,8 +16,7 @@ public class PreOrderTraversal {
 
     public static void main(String[] args) {
         TreeNode treeNode = TreeNode.initTree();
-        List<Integer> preOrderTraversal = preOrderTraversal(treeNode);
-        System.out.println(preOrderTraversal);
+        System.out.println(preOrderTraversal(treeNode));
         preOrderTraversal2(treeNode);
     }
 

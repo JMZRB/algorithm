@@ -5,6 +5,11 @@ package tree;
  *
  * @author ：zhaoRuBing
  * @since ：2020-08-22 18:42
+ *
+ *
+ *       1
+ *     2   3
+ *    4 5 6 7
  */
 public class TreeNode {
     public Integer data;

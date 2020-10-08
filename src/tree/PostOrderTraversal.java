@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -15,8 +16,7 @@ import java.util.Stack;
 public class PostOrderTraversal {
     public static void main(String[] args) {
         TreeNode treeNode = TreeNode.initTree();
-        List<Integer> postOrderTraversal = postOrderTraversal(treeNode);
-        System.out.println(postOrderTraversal);
+        System.out.println(postOrderTraversal(treeNode));
 //        postOrderTraversal2(treeNode);
     }
 
@@ -29,13 +29,15 @@ public class PostOrderTraversal {
         if(root == null){
             return null;
         }
-        List<Integer> res = new ArrayList<>();
+        //List<Integer> res = new ArrayList<>();
+        LinkedList<Integer> res = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()){
             TreeNode  temp = stack.pop();
             //向指定索引处添加元素
-            res.add(0,temp.data);
+            //res.add(0,temp.data);
+            res.addFirst(temp.data);
             if(temp.leftNode != null){
                 stack.push(temp.leftNode);
             }
