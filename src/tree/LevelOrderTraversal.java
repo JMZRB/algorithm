@@ -45,10 +45,10 @@ public class LevelOrderTraversal {
 
     private static List<List<Integer>> res = new ArrayList<>();
     private static List<List<Integer>> levelOrderTraversal2(TreeNode root, int level){
-        dfs(root,level);
+        bfs(root,level);
         return res;
     }
-    private static void dfs(TreeNode root, int level){
+    private static void bfs(TreeNode root, int level){
         if(root == null){
             return;
         }
@@ -57,7 +57,7 @@ public class LevelOrderTraversal {
         }
         //添加当前元素
         res.get(level).add(root.data);
-        dfs(root.leftNode,level+1);
-        dfs(root.rightNode,level+1);
+        bfs(root.leftNode,level+1);
+        bfs(root.rightNode,level+1);
     }
 }
